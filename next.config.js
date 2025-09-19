@@ -20,8 +20,7 @@ const nextConfig = {
     return [
       {
         // This will apply the headers to all API routes
-        source: "*",
-	// source: "/api/:path*",
+	source: "/api/:path*",
         headers: [
           { key: "Access-Control-Allow-Credentials", value: "true" },
           { key: "Access-Control-Allow-Origin", value: "*" }, // Allow all origins
