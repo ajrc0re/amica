@@ -15,6 +15,24 @@ const nextConfig = {
   publicRuntimeConfig: {
     root: process.env.BASE_PATH || "",
   },
+  // --- START: ADDED CORS CONFIGURATION ---
+  async headers() {
+    return [
+      {
+        // This will apply the headers to all API routes
+        source: "*",
+	// source: "/api/:path*",
+        headers: [
+          { key: "Access-Control-Allow-Credentials", value: "true" },
+          { key: "Access-Control-Allow-Origin", value: "*" }, // Allow all origins
+          { key: "Access-Control-Allow-Methods", value: "GET,DELETE,PATCH,POST,PUT,OPTIONS" },
+          { key: "Access-Control-Allow-Headers", value: "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version" },
+        ],
+      },
+    ];
+  },
+  // --- END: ADDED CORS CONFIGURATION ---
+
   optimizeFonts: false,
   webpack: (config, { webpack, buildId }) => {
     // See https://webpack.js.org/configuration/resolve/#resolvealias
